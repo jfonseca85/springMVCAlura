@@ -1,5 +1,8 @@
 package br.com.casadocodigo.loja.models;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +16,13 @@ public class Produto {
 
 	private String titulo;
 
+	private String descricao;
+	
+	private int paginas;
+	
+	@ElementCollection
+	private List<Precos> listPrecos;
+	
 	public int getId() {
 		return id;
 	}
@@ -20,10 +30,7 @@ public class Produto {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	private String descricao;
-	private int paginas;
-
+	
 	public String getTitulo() {
 		return titulo;
 	}
@@ -52,5 +59,13 @@ public class Produto {
 	public String toString() {
 		return "Produto [titulo=" + titulo + ", descricao=" + descricao
 				+ ", paginas=" + paginas + "]";
+	}
+
+	public List<Precos> getListPrecos() {
+		return listPrecos;
+	}
+
+	public void setListPrecos(List<Precos> listPrecos) {
+		this.listPrecos = listPrecos;
 	}
 }
