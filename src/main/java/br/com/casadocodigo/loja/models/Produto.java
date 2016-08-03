@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Produto {
@@ -22,6 +25,10 @@ public class Produto {
 	
 	@ElementCollection
 	private List<Precos> listPrecos;
+	@DateTimeFormat
+	private Calendar dataLancamento;
+	
+	private String sumarioPath;
 	
 	public int getId() {
 		return id;
@@ -55,17 +62,35 @@ public class Produto {
 		this.paginas = paginas;
 	}
 
-	@Override
-	public String toString() {
-		return "Produto [titulo=" + titulo + ", descricao=" + descricao
-				+ ", paginas=" + paginas + "]";
-	}
-
 	public List<Precos> getListPrecos() {
 		return listPrecos;
 	}
 
 	public void setListPrecos(List<Precos> listPrecos) {
 		this.listPrecos = listPrecos;
+	}
+
+	public Calendar getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(Calendar datalancamento) {
+		this.dataLancamento = datalancamento;
+	}
+
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", titulo=" + titulo + ", descricao="
+				+ descricao + ", paginas=" + paginas + ", listPrecos="
+				+ listPrecos + ", dataLancamento=" + dataLancamento
+				+ ", sumarioPath=" + sumarioPath + "]";
 	}
 }

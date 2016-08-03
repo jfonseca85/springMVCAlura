@@ -1,4 +1,4 @@
-package br.com.casadocodigo.loja.DAO;
+package br.com.casadocodigo.loja.daos;
 
 import java.util.List;
 
@@ -22,5 +22,9 @@ public class ProdutoDAO {
 
 	public List<Produto> listar() {
 		return this.manager.createQuery("select p from Produto p", Produto.class).getResultList();
+	}
+	
+	public Produto find(int id){
+	    return manager.createQuery("select distinct(p) from Produto p join fetch p.listPrecos precos where p.id = :id", Produto.class).setParameter("id", id).getSingleResult();
 	}
 }

@@ -2,7 +2,6 @@ package br.com.casadocodigo.loja.conf;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import org.springframework.context.annotation.Bean;
